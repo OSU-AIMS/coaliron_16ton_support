@@ -1,0 +1,3 @@
+[submodule "arduino_control/libraries/P1AM"]
+	path = arduino_control/libraries/P1AM
+	url = https://github.com/facts-engineering/P1AM
