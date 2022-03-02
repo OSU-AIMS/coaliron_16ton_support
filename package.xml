@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+    <name>coaliron_16ton_support</name>
+    <version>0.0.1</version>
+    <description>
+        <p>ROS-Industrial support for the Coal Iron 16-ton Hydraulic Forging Press</p>
+        <p>
+            This package contains configuration data, 3D models and launch files
+            for the Coal Iron 16-ton Hydraulic Forging Press.
+        </p>
+        <p>
+            <b>Specifications</b>
+        </p>
+        <ul>
+            <li>16 Ton - AIMS modifications for automation</li>
+        </ul>
+        <p>
+            Joint limits and maximum joint velocities are based on the information 
+            found online at 
+            https://coaliron.com/collections/hydraulic-forging-presses/products/16-ton-forging-press
+            All urdfs are based on the default motion and joint velocity limits, 
+            unless noted otherwise.
+        </p>
+        <p>
+            Before using any of the configuration files and / or meshes included
+            in this package, be sure to check they are correct for the particular
+            robot model and configuration you intend to use them with.
+        </p>
+    </description>
+    <author>Adam Buynak</author>
+    <author>Toby Mahan</author>
+    <maintainer email="buynak.9@buckeyemail.osu.edu">Adam Buynak (AIMS Lab @ The Ohio State University)</maintainer>
+    <license>Apache 2.0</license>
+
+    <url type="bugtracker">https://github.com/osu-aims/coaliron-16ton-support/issues</url>
+    <url type="repository">https://github.com/osu-aims/coaliron-16ton-support</url>
+
+    <buildtool_depend>catkin</buildtool_depend>
+
+    <test_depend>roslaunch</test_depend>
+
+    <exec_depend>rosserial_server</exec_depend>
+
+    <export>
+        <architecture_independent/>
+    </export>
+</package>
