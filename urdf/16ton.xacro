@@ -1,0 +1,4 @@
+<robot name="coaliron_16ton" xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:include filename="$(find coaliron_16ton_support)/urdf/16ton_macro.xacro" />
+	<xacro:coaliron_16ton prefix=""/>
+</robot>
