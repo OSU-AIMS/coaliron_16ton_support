@@ -69,6 +69,6 @@ git submodule update
 
 Hardware specific to this system is included below with links to the vendors documentation.
 
-| [P1AM-100](https://cdn.automationdirect.com/static/specs/p1amspecs.pdf) | [P1AM-ETH](https://cdn.automationdirect.com/static/specs/p1ameth.pdf) |
+| [P1AM-100](https://cdn.automationdirect.com/static/specs/p1amspecs.pdf) | [P1AM-ETH](https://cdn.automationdirect.com/static/specs/p1ameth.pdf) | Linear Encoder<br>[WPP-A-H-0400-E](https://www.automationdirect.com/adc/shopping/catalog/sensors_-z-_encoders/linear_position_sensors/magnetostrictive/wpp-a-h-0400-e)
 | -------- | -------- |
-| <img src="https://facts-engineering.github.io/modules/P1AM-100/P1AM-100_STRAIGHTON.png" width="100"> | <img src="https://facts-engineering.github.io/modules/P1AM-ETH/P1AM-ETH_STRAIGHTON.png" width="100"> |
+| <img src="https://facts-engineering.github.io/modules/P1AM-100/P1AM-100_STRAIGHTON.png" width="100"> | <img src="https://facts-engineering.github.io/modules/P1AM-ETH/P1AM-ETH_STRAIGHTON.png" width="100"> | <img src="https://cdn.automationdirect.com/images/products/views/pv_wppah0400e_01.jpg" width="300" |
