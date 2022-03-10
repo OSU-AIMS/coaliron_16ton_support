@@ -18,9 +18,6 @@ void report_serial_position() {
     Serial.print("     mm: ");
     Serial.print(posn_incr2meter(inputCounts)*1000);
     Serial.println("");
-
-    
-    Serial.print("Direction:        ");     Serial.println(directionOfMotion);
   }
 }
 
