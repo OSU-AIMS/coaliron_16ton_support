@@ -10,6 +10,7 @@ void setup_ros() {
   nh.initNode();
 
   nh.advertise(pub_joint_states);
+//  nh.advertise(pub_robot_status);/
 
 }
 

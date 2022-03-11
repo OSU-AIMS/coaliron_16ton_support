@@ -18,6 +18,7 @@
 #include <ros.h>
 #include <std_msgs/Header.h>
 #include <sensor_msgs/JointState.h>
+//#include <industrial_msgs/RobotStatus.h>
 
 
 
@@ -38,6 +39,7 @@ float posn_incr2meter();
 // ROS & Network Interfaces
 void setup_network();
 void setup_ros();
+void update_ros_robot_status();
 void update_ros_joint_states();
 void clearSerialBuffer();
 
@@ -72,9 +74,13 @@ unsigned long last_override = 0;
 ros::NodeHandle nh;
 
 std_msgs::Header joint_state_header;
+std_msgs::Header robot_status_header;
 
 sensor_msgs::JointState joint_state_msg;
+//industrial_msgs::RobotStatus robot_status_msg;
+
 ros::Publisher pub_joint_states("joint_states", &joint_state_msg);
+//ros::Publisher pub_robot_status("robot_status", &robot_status_msg);
 
 
 
