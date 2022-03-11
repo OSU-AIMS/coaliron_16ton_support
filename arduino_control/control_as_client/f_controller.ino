@@ -1,18 +1,9 @@
 // ------------------
-// Master Controller
+// Controller
 // ------------------
 
 
-void masterloop() {
-
-  // Serial Output
-  report_serial_position();
-
-  // Update State
-  int current_posn_incr = P1.readAnalog(2, 1);
-  float current_posn_meter = posn_incr2meter(current_posn_incr);
-  float current_posn = current_posn_meter;
-
+void controller(float current_posn) {
 
 
   // ------------------------
@@ -99,11 +90,3 @@ void masterloop() {
     
   }
 }
-
-
-void loop()
-{
-  masterloop();
-}
-
-// EOF

@@ -16,6 +16,7 @@
 
 // ROS
 #include <ros.h>
+#include <std_msgs/Header.h>
 #include <sensor_msgs/JointState.h>
 
 
@@ -37,10 +38,11 @@ float posn_incr2meter();
 // ROS & Network Interfaces
 void setup_network();
 void setup_ros();
+void update_ros_joint_states();
 void clearSerialBuffer();
 
 // Controller
-void masterloop();
+void controller();
 
 
 
@@ -66,11 +68,21 @@ unsigned long last_override = 0;
 // ROS Definitions
 // ----------------------
 
-// ROS Node Setup
+// ROS Node Setup (max one node allowed)
 ros::NodeHandle nh;
+
+std_msgs::Header joint_state_header;
 
 sensor_msgs::JointState joint_state_msg;
 ros::Publisher pub_joint_states("joint_states", &joint_state_msg);
+
+
+
+// ---------------------
+// Feedback Definitions 
+// ---------------------
+
+
 
 
 
@@ -86,8 +98,8 @@ const float calibration_meter_per_increment = 0.0000610740530772;
 //Stroke range meters
 const float maxStrokeSoft = 0.1651;
 const float minStrokeSoft = 0.0;
-const float maxStrokeHard = 0.20294907837554;
-const float minStrokeHard = 0.0;
+const float maxStrokeHard = 0.20294907837554;   // not currently used by control
+const float minStrokeHard = 0.0;                // not currently used by control
 
 //Target Position
 bool remoteMotionEnabled = false;
