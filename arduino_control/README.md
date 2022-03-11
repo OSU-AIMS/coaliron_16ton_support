@@ -64,6 +64,16 @@ git submodule update
 ```
 
 
+#### RunningAverage Library:
+
+Used to help calculate the velocity and acceleration of the press's actuator using only the position and time data.
+Git submodule needs loaded, see P1AM Library instructions as this should automatically be loaded using the same commands (duplicated below).
+
+```bash
+git submodule init
+git submodule update
+```
+
 
 ## Hardware
 

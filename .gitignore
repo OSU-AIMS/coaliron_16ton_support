@@ -1,3 +1,4 @@
 # Arduino Sketchbook
 arduino_control/libraries/*
 !arduino_control/libraries/P1AM
+!arduino_control/libraries/RunningAverage

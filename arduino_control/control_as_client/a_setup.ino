@@ -14,6 +14,9 @@
 // Use the TCP version of rosserial_arduino
 #define ROSSERIAL_ARDUINO_TCP
 
+// Kinematic Calculations (pos/vel/accel)
+#include <RunningAverage.h>/
+
 // ROS
 #include <ros.h>
 #include <std_msgs/Header.h>
