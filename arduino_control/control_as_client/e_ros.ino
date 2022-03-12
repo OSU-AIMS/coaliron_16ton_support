@@ -15,7 +15,7 @@ void setup_ros() {
 }
 
 
-void update_ros_joint_states(float pos_1) {
+void update_ros_joint_states(float pos_1, float vel_1, float acc_1) {
 
   // Message Header
   joint_state_header.stamp = nh.now();
@@ -23,8 +23,8 @@ void update_ros_joint_states(float pos_1) {
   // Build msg components
   char *name[] = {"joint_1"};
   float pos[]  = {pos_1};
-  float vel[]  = {0};
-  float eff[]  = {0};
+  float vel[]  = {vel_1};
+  float eff[]  = {acc_1};
   
   // Assemble & Update Message
   joint_state_msg.header   = joint_state_header;

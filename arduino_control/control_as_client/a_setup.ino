@@ -15,7 +15,7 @@
 #define ROSSERIAL_ARDUINO_TCP
 
 // Kinematic Calculations (pos/vel/accel)
-#include <RunningAverage.h>/
+#include <RunningAverage.h>
 
 // ROS
 #include <ros.h>
@@ -91,6 +91,19 @@ ros::Publisher pub_joint_states("joint_states", &joint_state_msg);
 // Feedback Definitions 
 // ---------------------
 
+// Initialize Clock Timer
+float last_time = millis();
+//TCNT1 = 0;
+//TCCR1A = 0;
+//TCCR1B = bit(CS10);
+//unsigned int cycles = TCNT1;
+
+// Allocate Space for RunningAverage Array
+uint16_t cache_size = 12000000;     // 0.25 second history cache
+RunningAverage cache_dt(cache_size);
+RunningAverage cache_dx(cache_size);
+RunningAverage cache_dxdt(cache_size);
+RunningAverage cache_dxddt(cache_size);
 
 
 
@@ -141,4 +154,13 @@ void setup() {
   }
 
   pinMode(LED_BUILTIN, OUTPUT);
+
+  // Feedback Setup
+  cache_dt.clear();
+  cache_dx.clear();
+  cache_dxdt.clear();
+  cache_dxddt.clear();
+
+//  last_posn_incr = P1.readAnalog(2, 1);
+//  cache_dx.addValue(dx);
 }
