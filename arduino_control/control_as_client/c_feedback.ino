@@ -30,3 +30,9 @@ float posn_incr2inch(const int inputCounts) {
 float posn_incr2meter(const int inputCounts) {
   return (inputCounts - increment_top_posn) * calibration_meter_per_increment;  //arduino's are slow at division
 }
+
+
+void set_remote_indicator(const bool setLight) {
+  if (setLight) { digitalWrite(LED_BUILTIN, HIGH); }
+  else          { digitalWrite(LED_BUILTIN, LOW);  }
+}

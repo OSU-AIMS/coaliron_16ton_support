@@ -35,6 +35,7 @@ void halt();
 void report_serial_position();
 float posn_incr2inch();
 float posn_incr2meter();
+void set_remote_indicator();
 
 // ROS & Network Interfaces
 void setup_network();
@@ -137,5 +138,9 @@ void setup() {
     delay(100); //Wait for Modules to Sign on  
   }
 
+  // Exteneral Remote Control Indicator
   pinMode(LED_BUILTIN, OUTPUT);
+
+  // Set Remote Control Indicator to OFF
+  set_remote_indicator(false);
 }
