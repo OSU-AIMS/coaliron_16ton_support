@@ -12,3 +12,27 @@
  * The Artificially Intelligent Manufacturing Systems Lab (AIMS)
  * Author: Adam Buynak
  */
+
+
+#include <Arduino.h>
+
+// P1AM-100 Special Functions
+#include <P1AM.h>
+
+// Communication Interfaces
+#include <SPI.h>
+#include <Ethernet.h>
+
+// Use the TCP version of rosserial_arduino
+#define ROSSERIAL_ARDUINO_TCP
+
+// ROS
+#include <ros.h>
+#include <std_msgs/Header.h>
+#include <sensor_msgs/JointState.h>
+//#include <industrial_msgs/RobotStatus.h>
+
+
+
+// Placeholder Required for Arduino's PreProcessor/Compiler
+void placeholder() {}
