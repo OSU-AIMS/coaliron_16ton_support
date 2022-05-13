@@ -12,6 +12,8 @@
  * The Artificially Intelligent Manufacturing Systems Lab (AIMS)
  * Author: Adam Buynak
  */
+ 
+ /* Software Version: v0.1.0 */
 
 
 #include <Arduino.h>
