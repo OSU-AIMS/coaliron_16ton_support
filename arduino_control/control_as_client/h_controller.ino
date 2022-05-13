@@ -1,18 +1,9 @@
 // ------------------
-// Master Controller
+// Controller
 // ------------------
 
 
-void masterloop() {
-
-  // Serial Output
-  report_serial_position();
-
-  // Update State
-  int current_posn_incr = P1.readAnalog(2, 1);
-  float current_posn_meter = posn_incr2meter(current_posn_incr);
-  float current_posn = current_posn_meter;
-
+void controller(float current_posn) {
 
 
   // ------------------------
@@ -24,6 +15,7 @@ void masterloop() {
   bool override_lockout = (last_override + override_timeout) > millis();
 
   if (mswitch_up || mswitch_dwn || override_lockout) {
+    set_remote_indicator(false);
     if ( mswitch_up == true && mswitch_dwn == false ) {
       last_override = millis();
       moveUp();
@@ -36,8 +28,7 @@ void masterloop() {
       remoteMotionEnabled = false;
       target_posn = current_posn; // Ensure fail's safe
       halt();
-    }
-    
+    } 
   }
 
 
@@ -99,11 +90,3 @@ void masterloop() {
     
   }
 }
-
-
-void loop()
-{
-  masterloop();
-}
-
-// EOF
