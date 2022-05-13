@@ -24,14 +24,23 @@ ros::Publisher pub_joint_states("joint_states", &joint_state_msg);
 
 void setup() {
 
-  // Initialize Comm Sockets
+  // Initialize Serial Comm Sockets
   Serial.begin(115200);
-  Ethernet.begin(mac);
+  Serial.println("Setup Process Complete");
 
-  // Setup Functions
-  setup_network();
+  // Setup Network for ROS (if requested)
+  pinMode(SWITCH_BUILTIN, INPUT);
+  bool enable_network = digitalRead(SWITCH_BUILTIN);
+
+  if (enable_network) {
+    Serial.println("Setup Configuration: Network enabled. Will now attempt to connect to network");
+    Ethernet.begin(mac);
+    setup_network();
+  }
+
+  // Setup ROS handles
   setup_ros();
-  
+    
   while (!P1.init()) {
     delay(100); //Wait for Modules to Sign on  
   }
@@ -41,4 +50,7 @@ void setup() {
 
   // Set Remote Control Indicator to OFF
   set_remote_indicator(false);
+
+  // Report Setup Success
+  Serial.println("Setup Process Complete");
 }
