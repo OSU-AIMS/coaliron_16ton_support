@@ -21,7 +21,7 @@ void halt() {
 }
 
 
-void set_fork_state(bool state)
+void set_fork_power(bool state)
 {
   P1.writeDiscrete(state, 1, 4);
 }

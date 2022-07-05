@@ -26,4 +26,4 @@ void clearSerialBuffer();
 
 // Controller
 void controller();
-void set_fork_state(bool state);
+void set_fork_power(bool state);
