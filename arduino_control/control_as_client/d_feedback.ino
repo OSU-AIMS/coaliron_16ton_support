@@ -32,6 +32,12 @@ float posn_incr2meter(const int inputCounts) {
 }
 
 
+bool get_fork_state()
+{
+  return P1.readDiscrete(1, 5);
+}
+
+
 void set_remote_indicator(const bool setLight) {
   if (setLight) { digitalWrite(LED_BUILTIN, HIGH); }
   else          { digitalWrite(LED_BUILTIN, LOW);  }

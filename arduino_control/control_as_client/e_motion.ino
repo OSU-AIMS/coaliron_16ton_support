@@ -19,3 +19,9 @@ void halt() {
   P1.writeDiscrete(LOW,1,2);   //Turn slot 1 channel 1 off
   P1.writeDiscrete(LOW,1,3);   //Turn slot 1 channel 2 off
 }
+
+
+void set_fork_state(bool state)
+{
+  P1.writeDiscrete(state, 1, 4);
+}

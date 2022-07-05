@@ -16,6 +16,7 @@ void halt();
 void report_serial_position();
 float posn_incr2inch();
 float posn_incr2meter();
+bool get_fork_state();
 void set_remote_indicator();
 
 // ROS & Network Interfaces
@@ -25,3 +26,4 @@ void clearSerialBuffer();
 
 // Controller
 void controller();
+void set_fork_state(bool state);

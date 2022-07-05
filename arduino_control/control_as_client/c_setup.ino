@@ -45,6 +45,9 @@ void setup() {
     delay(100); //Wait for Modules to Sign on  
   }
 
+  // Initialize Sensors
+  set_fork_state(true);
+
   // Exteneral Remote Control Indicator
   pinMode(LED_BUILTIN, OUTPUT);
 
