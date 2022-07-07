@@ -13,7 +13,7 @@
  * Author: Adam Buynak
  */
  
- /* Software Version: v0.1.0 */
+ /* Software Version: v0.1.1 */
 
 
 #include <Arduino.h>
@@ -32,6 +32,7 @@
 #include <ros.h>
 #include <std_msgs/Header.h>
 #include <sensor_msgs/JointState.h>
+#include <std_msgs/Bool.h>
 //#include <industrial_msgs/RobotStatus.h>
 
 

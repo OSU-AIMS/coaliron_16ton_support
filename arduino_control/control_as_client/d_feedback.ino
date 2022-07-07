@@ -15,7 +15,7 @@ void report_serial_position() {
     Serial.print(P1.readAnalog(2, 1));
     Serial.print("     inch: ");
     Serial.print(posn_incr2inch(inputCounts));
-    Serial.print("     mm: ");
+    Serial.print("     (input) mm: ");
     Serial.print(posn_incr2meter(inputCounts)*1000);
     Serial.println("");
   }
@@ -29,6 +29,12 @@ float posn_incr2inch(const int inputCounts) {
 
 float posn_incr2meter(const int inputCounts) {
   return (inputCounts - increment_top_posn) * calibration_meter_per_increment;  //arduino's are slow at division
+}
+
+
+bool get_fork_state()
+{
+  return P1.readDiscrete(1, 5);
 }
 
 

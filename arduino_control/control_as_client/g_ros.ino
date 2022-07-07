@@ -10,6 +10,7 @@ void setup_ros() {
   nh.initNode();
 
   nh.advertise(pub_joint_states);
+  nh.advertise(pub_fork_state);
 //  nh.advertise(pub_robot_status);/
 
 }
@@ -40,4 +41,15 @@ void update_ros_joint_states(float pos_1) {
   joint_state_msg.effort_length   = 1;
 
   pub_joint_states.publish( &joint_state_msg );
+}
+
+
+void update_ros_fork_state(bool &state) {
+
+  // Update message
+  fork_state_msg.data = state;
+
+  // Publish message
+  pub_fork_state.publish( &fork_state_msg );
+  
 }
