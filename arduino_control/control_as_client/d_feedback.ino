@@ -15,7 +15,7 @@ void report_serial_position() {
     Serial.print(P1.readAnalog(2, 1));
     Serial.print("     inch: ");
     Serial.print(posn_incr2inch(inputCounts));
-    Serial.print("     mm: ");
+    Serial.print("     (input) mm: ");
     Serial.print(posn_incr2meter(inputCounts)*1000);
     Serial.println("");
   }
