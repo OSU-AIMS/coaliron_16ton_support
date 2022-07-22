@@ -15,6 +15,15 @@ void moveUp() {
 }
 
 
+void set_flow_control_valve(bool state)
+{
+  //Input 'state' sets the speed of the press
+  //by opening/closing the flow control valve.
+  //High for fast, LOW for slow
+  P1.writeDiscrete(state,1,7); //Set the flow control valve to state
+}
+
+
 void halt() {
   P1.writeDiscrete(LOW,1,2);   //Turn slot 1 channel 1 off
   P1.writeDiscrete(LOW,1,3);   //Turn slot 1 channel 2 off

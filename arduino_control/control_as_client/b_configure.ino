@@ -33,6 +33,9 @@ const float minStrokeSoft = 0.0;
 const float maxStrokeHard = 0.20294907837554;   // not currently used by control
 const float minStrokeHard = 0.0;                // not currently used by control
 
+//Position control
+const float motionBuffer = 0.012;
+
 //Target Position
 bool remoteMotionEnabled = false;
 bool directionOfMotion;                  // false = down, true = up

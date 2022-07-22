@@ -10,6 +10,8 @@ void setup_ros();
 // Motion
 void moveDown();
 void moveUp();
+void set_flow_control_valve(bool state);
+bool tempFlowValveState = false;
 void halt();
 
 // Feedback
