@@ -8,16 +8,15 @@ void loop()
   
   // Read Sensors
   int current_posn_incr = P1.readAnalog(2, 1);
-  int current_temp_counts = P1.readAnalog(2, 3);
+  int current_temp_incr = P1.readAnalog(2, 3);
   float current_p1 = posn_incr2meter(current_posn_incr);
-  float current_t1 = temperature_count2degree(current_temp_counts);
+  float current_t1 = temperature_count2degree(current_temp_incr);
   bool current_fork_state = get_fork_state();
   bool current_t1_a1_state = get_temperature1_alarm1_state();
   bool current_press_power_switch_state = get_press_power_switch_state();
   
   // Serial Interface
-  report_serial_position();
-  report_serial_temperature(current_t1);
+  report_serial(current_posn_incr, current_temp_incr);
   
   // ROS Interface
   if (nh.connected()) {

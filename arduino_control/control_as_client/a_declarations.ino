@@ -8,8 +8,7 @@ void setup_network();
 void setup_ros();
 
 // Feedback Position
-void report_serial_position();
-void report_serial_temperature();
+void report_serial();
 float posn_incr2inch();
 float posn_incr2meter();
 

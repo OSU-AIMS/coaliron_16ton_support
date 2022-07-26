@@ -19,9 +19,9 @@ sensor_msgs::Temperature temperature1_msg;
 
 ros::Publisher pub_joint_states("joint_states", &joint_state_msg);
 ros::Publisher pub_fork_state("fork_state", &fork_state_msg);
-ros::Publisher pub_press_power_switch_state("press_power_switch_state", &press_power_switch_state_msg);
-ros::Publisher pub_temperature1_alarm1_state("temp_alarm1_state", &temperature1_alarm1_state_msg);
-ros::Publisher pub_temperature1("press_temperature1", &temperature1_msg);
+ros::Publisher pub_press_power_switch_state("power_switch_state", &press_power_switch_state_msg);
+ros::Publisher pub_temperature1_alarm1_state("temperature1_alarm1_state", &temperature1_alarm1_state_msg);
+ros::Publisher pub_temperature1("temperature1", &temperature1_msg);
 //ros::Publisher pub_robot_status("robot_status", &robot_status_msg);
 
 
