@@ -42,28 +42,21 @@ float posn_incr2meter(const int inputCounts) {
   return (inputCounts - increment_top_posn) * calibration_meter_per_increment;  //arduino's are slow at division
 }
 
-
-float temp_count2degree(const int inputCounts) {
-  return (inputCounts * calibration_degree_per_count);
-}
-
-
-bool get_fork_state()
-{
+bool get_fork_state() {
   return P1.readDiscrete(1, 5);
 }
 
-
-bool get_temp_alarm1_state()
-{
-  return P1.readDiscrete(1, 3);
-}
-
-bool get_press_power_switch_state()
-{
+bool get_press_power_switch_state() {
   return P1.readDiscrete(1, 6);
 }
 
+float temperature_count2degree(const int inputCounts) {
+  return (inputCounts * calibration_degree_per_count);
+}
+
+bool get_temperature1_alarm1_state() {
+  return P1.readDiscrete(1, 3);
+}
 
 void set_remote_indicator(const bool setLight) {
   if (setLight) { digitalWrite(LED_BUILTIN, HIGH); }
