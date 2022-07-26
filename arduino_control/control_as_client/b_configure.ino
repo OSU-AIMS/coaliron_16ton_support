@@ -25,7 +25,11 @@ unsigned long last_override = 0;
 // Calibration Data
 const int increment_top_posn = 2034;
 const float calibration_inch_per_increment = 0.00240449027863;  
-const float calibration_meter_per_increment = 0.0000610740530772;  
+const float calibration_meter_per_increment = 0.0000610740530772;
+const int analog_input_counts = 8191;  //13-bit P1-08ADL-1 0-20mA input module
+const int temp_sense_min = 150;  // deg. C
+const int temp_sense_max = 1000; // deg. C
+const float calibration_degree_per_count = (temp_sense_max - temp_sense_min) / analog_input_counts;
 
 //Stroke range meters
 const float maxStrokeSoft = 0.1651;

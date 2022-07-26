@@ -22,6 +22,17 @@ void report_serial_position() {
 }
 
 
+void report_serial_temperature(const float current_temp_degrees) {
+  
+  if(millis() - time_now > period) {
+    time_now = millis();
+    
+    Serial.print("Temperature: ");
+    Serial.println(current_temp_degrees);
+  }
+}
+
+
 float posn_incr2inch(const int inputCounts) {
   return (inputCounts - increment_top_posn) * calibration_inch_per_increment;  //arduino's are slow at division
 }
@@ -32,9 +43,25 @@ float posn_incr2meter(const int inputCounts) {
 }
 
 
+float temp_count2degree(const int inputCounts) {
+  return (inputCounts * calibration_degree_per_count);
+}
+
+
 bool get_fork_state()
 {
   return P1.readDiscrete(1, 5);
+}
+
+
+bool get_temp_alarm1_state()
+{
+  return P1.readDiscrete(1, 3);
+}
+
+bool get_press_power_switch_state()
+{
+  return P1.readDiscrete(1, 6);
 }
 
 
