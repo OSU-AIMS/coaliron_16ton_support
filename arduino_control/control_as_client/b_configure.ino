@@ -33,6 +33,10 @@ const float minStrokeSoft = 0.0;
 const float maxStrokeHard = 0.20294907837554;   // not currently used by control
 const float minStrokeHard = 0.0;                // not currently used by control
 
+//Remote Interface
+bool ros_enabled = false;
+float last_ros_joint_command = 0;        // Initialize goal to zero for safety
+
 //Position control
 const float motionBuffer = 0.012;
 

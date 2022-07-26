@@ -22,6 +22,7 @@ bool get_fork_state();
 void set_remote_indicator();
 
 // ROS & Network Interfaces
+void cb_joint_command(const std_msgs::Float64);
 void update_ros_robot_status();
 void update_ros_joint_states();
 void clearSerialBuffer();

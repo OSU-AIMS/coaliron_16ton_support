@@ -15,7 +15,7 @@ void loop()
   report_serial_position();
   
   // ROS Interface
-  if (nh.connected()) {
+  if (nh.connected() && ros_enabled) {
 
     // Set ROS Indicator Light = ON
     set_remote_indicator(true);

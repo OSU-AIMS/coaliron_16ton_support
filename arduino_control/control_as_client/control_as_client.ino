@@ -33,6 +33,7 @@
 #include <std_msgs/Header.h>
 #include <sensor_msgs/JointState.h>
 #include <std_msgs/Bool.h>
+#include <std_msgs/Float64.h>
 //#include <industrial_msgs/RobotStatus.h>
 
 
