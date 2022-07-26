@@ -11,6 +11,9 @@ void setup_ros() {
 
   nh.advertise(pub_joint_states);
   nh.advertise(pub_fork_state);
+  nh.advertise(pub_press_power_switch_state);
+  nh.advertise(pub_temperature1_alarm1_state);
+  nh.advertise(pub_temperature1);
 //  nh.advertise(pub_robot_status);/
 
 }
@@ -51,5 +54,41 @@ void update_ros_fork_state(bool &state) {
 
   // Publish message
   pub_fork_state.publish( &fork_state_msg );
+  
+}
+
+
+void update_ros_temperature1(float &current_temp_degrees) {
+
+  // Message Header
+  temperature_header.stamp = nh.now();
+  
+  // Assemble & Update Message
+  temperature1_msg.header      = temperature_header;
+  temperature1_msg.temperature = current_temp_degrees;
+  temperature1_msg.variance    = 0;
+
+  pub_temperature1.publish( &temperature1_msg );
+}
+
+
+void update_ros_temperature1_alarm1_state(bool &state) {
+
+  // Update message
+  temperature1_alarm1_state_msg.data = state;
+
+  // Publish message
+  pub_temperature1_alarm1_state.publish( &temperature1_alarm1_state_msg );
+  
+}
+
+
+void update_ros_press_power_switch_state(bool &state) {
+
+  // Update message
+  press_power_switch_state_msg.data = state;
+
+  // Publish message
+  pub_press_power_switch_state.publish( &press_power_switch_state_msg );
   
 }
