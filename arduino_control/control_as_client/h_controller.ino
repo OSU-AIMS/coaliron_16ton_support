@@ -15,7 +15,9 @@ void controller(float current_posn) {
   bool override_lockout = (last_override + override_timeout) > millis();
 
   if (mswitch_up || mswitch_dwn || override_lockout) {
+    set_flow_control_valve(LOW);
     set_remote_indicator(false);
+    remoteMotionEnabled = false;
     if ( mswitch_up == true && mswitch_dwn == false ) {
       last_override = millis();
       moveUp();
@@ -25,9 +27,8 @@ void controller(float current_posn) {
       moveDown();
     }
     else {
-      remoteMotionEnabled = false;
-      target_posn = current_posn; // Ensure fail's safe
       halt();
+      target_posn = current_posn; // Ensure fail's safe
     } 
   }
 
