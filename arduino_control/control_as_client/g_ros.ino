@@ -16,6 +16,32 @@ void setup_ros() {
   nh.advertise(pub_temperature1);
 //  nh.advertise(pub_robot_status);/
 
+  nh.subscribe(sub_joint_command);
+}
+
+void cb_joint_command(const std_msgs::Float64& msg) {
+  
+  // Extract data from message
+  last_ros_joint_command = msg.data;
+
+  // Lookup Current Position
+  float current_posn = posn_incr2meter(P1.readAnalog(2, 1));
+
+  // Soft Stop Limits
+  if      (last_ros_joint_command > maxStrokeSoft) last_ros_joint_command = maxStrokeSoft;
+  else if (last_ros_joint_command < minStrokeSoft) last_ros_joint_command = minStrokeSoft;
+
+  // Set the direction of motion
+  if (current_posn < last_ros_joint_command) directionOfMotion = false;  // down
+  else                                       directionOfMotion = true;   // up
+
+  // Serial Feedback
+  Serial.print("Set New Target Position: ");
+  Serial.println(last_ros_joint_command, 3);
+
+  // Enable Motion
+  remoteMotionEnabled = true;
+  remoteTargetAchieved = false;
 }
 
 

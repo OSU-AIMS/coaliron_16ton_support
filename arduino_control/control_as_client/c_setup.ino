@@ -15,6 +15,7 @@ std_msgs::Bool fork_state_msg;
 std_msgs::Bool press_power_switch_state_msg;
 std_msgs::Bool temperature1_alarm1_state_msg;
 sensor_msgs::Temperature temperature1_msg;
+std_msgs::Float64 joint_command;
 //industrial_msgs::RobotStatus robot_status_msg;
 
 ros::Publisher pub_joint_states("joint_states", &joint_state_msg);
@@ -24,6 +25,7 @@ ros::Publisher pub_temperature1_alarm1_state("temperature1_alarm1_state", &tempe
 ros::Publisher pub_temperature1("temperature1", &temperature1_msg);
 //ros::Publisher pub_robot_status("robot_status", &robot_status_msg);
 
+ros::Subscriber<std_msgs::Float64> sub_joint_command("joint_command", cb_joint_command);
 
 
 // -------------------
@@ -45,6 +47,10 @@ void setup() {
     Serial.println("Setup Configuration: Network enabled. Will now attempt to connect to network");
     Ethernet.begin(mac);
     setup_network();
+    ros_enabled = true;
+  }
+  else {
+    ros_enabled = false;
   }
 
   // Setup ROS handles

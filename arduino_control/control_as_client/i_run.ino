@@ -19,7 +19,7 @@ void loop()
   report_serial(current_posn_incr, current_temp_incr);
   
   // ROS Interface
-  if (nh.connected()) {
+  if (nh.connected() && ros_enabled) {
 
     // Set ROS Indicator Light = ON
     set_remote_indicator(true);
