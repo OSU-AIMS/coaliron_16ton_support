@@ -13,6 +13,7 @@ void controller(float current_posn) {
   bool mswitch_up  = P1.readDiscrete(1,1);
   bool mswitch_dwn = P1.readDiscrete(1,2);
   bool override_lockout = (last_override + override_timeout) > millis();
+  bool current_press_power_switch_state = get_press_power_switch_state();
 
   if (mswitch_up || mswitch_dwn || override_lockout) {
     set_flow_control_valve(LOW);
@@ -83,6 +84,14 @@ void controller(float current_posn) {
   // ---------------------------
 
   if (remoteTargetAchieved == false && remoteMotionEnabled && override_lockout == false) {
+
+    // Kill motion command if hydraulic pump is inactive
+    if(current_press_power_switch_state == false)
+    {
+      halt();
+      set_flow_control_valve(LOW);  // default back to slow speed
+      target_posn = current_posn;   // fail safe
+    }
     
     // Check if target position achieved
     if      (directionOfMotion == false && current_posn >= target_posn) remoteTargetAchieved = true;  // overshoot moving down              
