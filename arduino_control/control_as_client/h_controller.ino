@@ -35,6 +35,20 @@ void controller(float current_posn) {
 
 
 
+  // ----------------------------
+  // Hydraulic Motor State Check
+  // ----------------------------
+  // Kill motion command if hydraulic pump is inactive
+  
+  if(current_press_power_switch_state == false)
+  {
+    halt();
+    set_flow_control_valve(LOW);  // default back to slow speed
+    target_posn = current_posn;   // fail safe
+  }
+
+
+
   // -----------------------------
   // Remote Input ~ Serial or ROS
   // -----------------------------
@@ -84,14 +98,6 @@ void controller(float current_posn) {
   // ---------------------------
 
   if (remoteTargetAchieved == false && remoteMotionEnabled && override_lockout == false) {
-
-    // Kill motion command if hydraulic pump is inactive
-    if(current_press_power_switch_state == false)
-    {
-      halt();
-      set_flow_control_valve(LOW);  // default back to slow speed
-      target_posn = current_posn;   // fail safe
-    }
     
     // Check if target position achieved
     if      (directionOfMotion == false && current_posn >= target_posn) remoteTargetAchieved = true;  // overshoot moving down              
