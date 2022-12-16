@@ -35,7 +35,7 @@ const int temp_sense_max = 1000; // deg. C
 const float calibration_degree_per_count = (temp_sense_max - temp_sense_min) / analog_input_counts;
 
 //Stroke range meters
-const float maxStrokeSoft = 0.1651;
+const float maxStrokeSoft = 0.2;
 const float minStrokeSoft = 0.0;
 const float maxStrokeHard = 0.20294907837554;   // not currently used by control
 const float minStrokeHard = 0.0;                // not currently used by control
