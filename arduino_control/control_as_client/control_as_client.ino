@@ -36,6 +36,7 @@
 #include <std_msgs/Float64.h>
 #include <sensor_msgs/Temperature.h>
 //#include <industrial_msgs/RobotStatus.h>
+#include <coaliron_16ton_support/JointControlPoint.h>
 
 
 

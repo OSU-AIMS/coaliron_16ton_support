@@ -37,10 +37,14 @@
     <url type="repository">https://github.com/osu-aims/coaliron-16ton-support</url>
 
     <buildtool_depend>catkin</buildtool_depend>
+    
+    <build_depend>message_generation</build_depend>  
+    <depend>std_msgs</depend>  
 
     <test_depend>roslaunch</test_depend>
 
     <exec_depend>rosserial_server</exec_depend>
+    <exec_depend>message_runtime</exec_depend>
 
     <export>
         <architecture_independent/>
