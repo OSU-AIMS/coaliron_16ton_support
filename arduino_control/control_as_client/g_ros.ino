@@ -16,13 +16,19 @@ void setup_ros() {
   nh.advertise(pub_temperature1);
 //  nh.advertise(pub_robot_status);/
 
-  nh.subscribe(sub_joint_command);
+  nh.advertiseService(srv_joint_command);
 }
 
-void cb_joint_command(const std_msgs::Float64& msg) {
+
+void cb_joint_command(const coaliron_16ton_support::JointControlPoint::Request &req,
+                      coaliron_16ton_support::JointControlPoint::Response &res) {
   
   // Extract data from message
-  last_ros_joint_command = msg.data;
+  last_ros_joint_command = req.position;
+
+  // Set control valve to FAST or SLOW speed
+  if (req.speed_fast) {set_flow_control_valve(HIGH);}
+  else {set_flow_control_valve(LOW);}
 
   // Lookup Current Position
   float current_posn = posn_incr2meter(P1.readAnalog(2, 1));
@@ -39,9 +45,17 @@ void cb_joint_command(const std_msgs::Float64& msg) {
   Serial.print("Set New Target Position: ");
   Serial.println(last_ros_joint_command, 3);
 
-  // Enable Motion
-  remoteMotionEnabled = true;
-  remoteTargetAchieved = false;
+  // Enable Motion & Response
+  if (get_press_power_switch_state()) {
+    remoteMotionEnabled = true;
+    remoteTargetAchieved = false;
+    res.result = true;
+  }
+  else {
+    remoteMotionEnabled = false;
+    res.result = false;
+  }
+
 }
 
 

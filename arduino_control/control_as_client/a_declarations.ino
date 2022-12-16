@@ -22,7 +22,8 @@ bool get_temperature1_alarm1_state();
 void set_remote_indicator();
 
 // ROS & Network Interfaces
-void cb_joint_command(const std_msgs::Float64);
+void cb_joint_command(const coaliron_16ton_support::JointControlPoint::Request &req,
+                      coaliron_16ton_support::JointControlPoint::Response &res);
 void update_ros_robot_status();
 void update_ros_joint_states();
 void update_ros_fork_state();

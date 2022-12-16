@@ -25,7 +25,7 @@ ros::Publisher pub_temperature1_alarm1_state("temperature1_alarm1_state", &tempe
 ros::Publisher pub_temperature1("temperature1", &temperature1_msg);
 //ros::Publisher pub_robot_status("robot_status", &robot_status_msg);
 
-ros::Subscriber<std_msgs::Float64> sub_joint_command("joint_command", cb_joint_command);
+ros::ServiceServer<coaliron_16ton_support::JointControlPoint::Request, coaliron_16ton_support::JointControlPoint::Response> srv_joint_command("my_joint_command", &cb_joint_command);
 
 
 // -------------------
