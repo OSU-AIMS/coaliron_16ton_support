@@ -1,0 +1,97 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+<xacro:macro name="coaliron_16ton" params="prefix">
+
+    <!-- link list -->
+    <link name="${prefix}base_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coaliron_16ton_support/meshes/visual/base_link3.stl" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coaliron_16ton_support/meshes/collision/base_link3.stl" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="${prefix}press_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coaliron_16ton_support/meshes/visual/press_link3.stl"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://coaliron_16ton_support/meshes/collision/press_link3.stl"/>
+            </geometry>
+            <material>
+                <color rgba="0.5 0.55 0.9 0.8"/>
+            </material>
+        </collision>
+    </link>
+    <!-- end of link list -->
+
+    <!-- joint list -->
+    <joint name="${prefix}joint_1" type="prismatic">
+        <parent link="${prefix}press_frame"/>
+        <child link="${prefix}press_link"/>
+        <origin xyz="0 0 0.2413" rpy="0 0 0" />
+        <axis xyz="0 0 -1" />
+        <limit lower="0" upper="0.2921" effort="100" velocity="10"/>
+    </joint>
+    <!-- end of joint list -->
+
+
+
+
+<!--World frame to base_fc (front-center) transform-->
+<link name="${prefix}world_frame" />
+<link name="${prefix}base_fc" />
+<joint name="${prefix}world_to_base_fc" type="fixed">
+    <parent link="${prefix}world_frame"/>
+    <child link="${prefix}base_fc"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+</joint>
+
+<!--base_fc (front-center) to base_link transform-->
+<joint name="${prefix}base_fc_to_base_link" type="fixed">
+    <parent link="${prefix}base_fc"/>
+    <child link="${prefix}base_link"/>
+    <origin xyz="0 0.38 0" rpy="0 0 0"/>
+</joint>
+
+
+<!--base_link to bottom_tool_frame transform-->
+<link name="${prefix}bottom_tool_frame" />
+<joint name="${prefix}base_to_bottom_tool" type="fixed">
+    <parent link="${prefix}base_link"/>
+    <child link="${prefix}bottom_tool_frame"/>
+    <origin xyz="0.13 0.04 0.93" rpy="0 0 0"/>
+</joint>
+
+<!--base_link to press_frame transform-->
+<link name="${prefix}press_frame" />
+<joint name="${prefix}base_to_press" type="fixed">
+    <parent link="${prefix}base_link"/>
+    <child link="${prefix}press_frame"/>
+    <origin xyz="0.13 0.04 1.42" rpy="0 0 0"/>
+</joint>
+
+<!--press_link to top_tool_frame transform-->
+<link name="${prefix}tool_frame" />
+<joint name="${prefix}press_to_tool" type="fixed">
+    <parent link="${prefix}press_link"/>
+    <child link="${prefix}tool_frame"/>
+    <origin xyz="0 0 -0.4445" rpy="0 0 0"/>
+</joint>
+    
+
+
+    </xacro:macro>
+</robot>
+
