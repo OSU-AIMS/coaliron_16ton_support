@@ -9,7 +9,7 @@ byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED }; // NIC mac address
 
 // ROS Master Information 
 // Server host's port to talk with Arduino Client. NOT ROS port 11311.
-IPAddress rosmaster(10,10,10,52);
+IPAddress rosmaster(10,10,10,90);
 const uint16_t serverPort = 11411;
 
 // Manual Override
