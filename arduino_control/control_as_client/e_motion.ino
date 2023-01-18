@@ -4,14 +4,22 @@
 
 
 void moveDown() {
-  P1.writeDiscrete(LOW,1,2);   //Turn slot 1 channel 1 on
-  P1.writeDiscrete(HIGH,1,3);  //Turn slot 1 channel 2 off
+  // Clear Halt Flag
+  been_halted = false;
+
+  // Set valves to move DOWN
+  P1.writeDiscrete(LOW,1,5);   //Turn slot 1 channel 4 on
+  P1.writeDiscrete(HIGH,1,6);  //Turn slot 1 channel 5 off
 }
 
 
 void moveUp() {
-  P1.writeDiscrete(HIGH,1,2);  //Turn slot 1 channel 1 on
-  P1.writeDiscrete(LOW,1,3);   //Turn slot 1 channel 2 off
+  // Clear Halt Flag
+  been_halted = false;
+
+  // Set valves to move UP
+  P1.writeDiscrete(LOW,1,6);   //Turn slot 1 channel 5 off
+  P1.writeDiscrete(HIGH,1,5);  //Turn slot 1 channel 4 on
 }
 
 
@@ -25,8 +33,21 @@ void set_flow_control_valve(bool state)
 
 
 void halt() {
-  P1.writeDiscrete(LOW,1,2);   //Turn slot 1 channel 1 off
-  P1.writeDiscrete(LOW,1,3);   //Turn slot 1 channel 2 off
+
+  if (!been_halted)
+  {
+    Serial.println("Recieved HALT command. Setting MoveUp for # ms.");
+    moveUp();
+  
+    delay(50); // Pause n ms
+    Serial.println("Commanding HALT (both valves closed.");
+  }
+  
+  P1.writeDiscrete(LOW,1,5);   //Turn slot 1 channel 4 off
+  P1.writeDiscrete(LOW,1,6);   //Turn slot 1 channel 5 off
+
+  // Set Flag that halt has been called
+  been_halted = true;
 }
 
 

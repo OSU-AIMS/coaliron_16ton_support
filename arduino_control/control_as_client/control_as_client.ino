@@ -13,7 +13,7 @@
  * Author: Adam Buynak
  */
  
- /* Software Version: v0.2.1 */
+ /* Software Version: v0.2.2 */
 
 
 #include <Arduino.h>
