@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="2">
     <name>coaliron_16ton_support</name>
-    <version>0.0.1</version>
+    <version>0.2.2</version>
     <description>
         <p>ROS-Industrial support for the Coal Iron 16-ton Hydraulic Forging Press</p>
         <p>
@@ -30,7 +30,8 @@
     </description>
     <author>Adam Buynak</author>
     <author>Toby Mahan</author>
-    <maintainer email="buynak.9@buckeyemail.osu.edu">Adam Buynak (AIMS Lab @ The Ohio State University)</maintainer>
+    <author>Tal Yankevich </author>
+    <maintainer email="buynak.9@osu.edu">Adam Buynak (AIMS Lab @ The Ohio State University)</maintainer>
     <license>Apache 2.0</license>
 
     <url type="bugtracker">https://github.com/osu-aims/coaliron-16ton-support/issues</url>
