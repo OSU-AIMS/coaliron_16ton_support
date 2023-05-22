@@ -15,7 +15,8 @@ find_package(ament_cmake REQUIRED)
 
 # Install Misc ROS Elements
 install(
-  DIRECTORY urdf
+  DIRECTORY config
+            urdf
             launch
             meshes
             #srdf
