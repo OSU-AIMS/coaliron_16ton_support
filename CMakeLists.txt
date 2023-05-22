@@ -1,12 +1,25 @@
-cmake_minimum_required(VERSION 3.0.2)
-
+cmake_minimum_required(VERSION 3.5)
 project(coaliron_16ton_support)
 
-find_package(catkin REQUIRED)
 
-catkin_package()
+####################
+## Compiler Setup ##
+####################
 
+find_package(ament_cmake REQUIRED)
+
+
+#############
+## Install ##
+#############
+
+# Install Misc ROS Elements
 install(
-    DIRECTORY launch urdf meshes
-    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-)
+  DIRECTORY urdf
+            launch
+            meshes
+            #srdf
+  DESTINATION share/${PROJECT_NAME}/)
+
+
+ament_package()

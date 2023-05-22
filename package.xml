@@ -37,13 +37,14 @@
     <url type="bugtracker">https://github.com/osu-aims/coaliron-16ton-support/issues</url>
     <url type="repository">https://github.com/osu-aims/coaliron-16ton-support</url>
 
-    <buildtool_depend>catkin</buildtool_depend>
+    <buildtool_depend>ament_cmake</buildtool_depend>
 
     <test_depend>roslaunch</test_depend>
 
     <exec_depend>rosserial_server</exec_depend>
 
     <export>
-        <architecture_independent/>
+        <build_type>ament_cmake</build_type>
+        <!-- <architecture_independent/> -->
     </export>
 </package>
