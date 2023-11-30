@@ -129,3 +129,22 @@ void controller(float current_posn) {
     else if (directionOfMotion == true) set_flow_control_valve(LOW);
   }
 }
+
+
+void set_induction_power(bool state)
+{
+  // Set power to induction heater remote switch
+  P1.writeDiscrete(state,1,3); // Turn on slot 1 channel 3
+
+  // Report state change
+  if( state )
+  {
+    Serial.println("Induction heater set to: ON");
+    nh.loginfo("Induction heater set to: ON");
+  }
+  else
+  {
+    Serial.println("Induction heater set to: OFF");
+    nh.loginfo("Induction heater set to: OFF");
+  }
+}

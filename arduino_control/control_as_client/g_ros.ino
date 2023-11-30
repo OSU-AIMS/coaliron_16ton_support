@@ -17,6 +17,8 @@ void setup_ros() {
 //  nh.advertise(pub_robot_status);/
 
   nh.subscribe(sub_joint_command);
+
+  nh.advertiseService(srv_induction_power);
 }
 
 void cb_joint_command(const std_msgs::Float64& msg) {
@@ -117,4 +119,14 @@ void update_ros_press_power_switch_state(bool &state) {
   // Publish message
   pub_press_power_switch_state.publish( &press_power_switch_state_msg );
   
+}
+
+
+void cb_srv_induction_coil(const std_srvs::SetBool::Request &req, std_srvs::SetBool::Response &res) {
+
+  // Set Coil Power
+  set_induction_power(req.data);
+
+  // Stuff result
+  res.success = true;
 }

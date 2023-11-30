@@ -29,6 +29,7 @@ void update_ros_fork_state();
 void update_ros_temperature1();
 void update_ros_temperature1_alarm1_state();
 void update_ros_press_power_switch_state();
+void cb_srv_induction_coil(const std_srvs::SetBool::Request &req, std_srvs::SetBool::Response &res);
 void clearSerialBuffer();
 
 // Motion
@@ -42,3 +43,4 @@ bool tempFlowValveState = false;
 // Controller
 void controller();
 void set_fork_power(bool state);
+void set_induction_power(bool state);
