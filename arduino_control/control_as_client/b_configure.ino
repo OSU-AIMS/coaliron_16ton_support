@@ -51,7 +51,7 @@ const float motionBuffer = 0.012;
 bool remoteMotionEnabled = false;
 bool directionOfMotion;                  // false = down, true = up
 float target_posn = 0;                   // Initialize goal to zero for safety
-bool remoteTargetAchieved = false;
+bool remoteTargetAchieved = true;
 
 //Timer for position update over serial
 const int period = 500;                  //Time between serial monitor updates [ms]

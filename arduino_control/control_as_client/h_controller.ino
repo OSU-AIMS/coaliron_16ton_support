@@ -13,7 +13,6 @@ void controller(float current_posn) {
   bool mswitch_up  = P1.readDiscrete(1,1);
   bool mswitch_dwn = P1.readDiscrete(1,2);
   bool override_lockout = (last_override + override_timeout) > millis();
-  bool current_press_power_switch_state = get_press_power_switch_state();
 
   if (mswitch_up || mswitch_dwn || override_lockout) {
     set_flow_control_valve(LOW);
@@ -40,7 +39,7 @@ void controller(float current_posn) {
   // ----------------------------
   // Kill motion command if hydraulic pump is inactive
   
-  if(current_press_power_switch_state == false)
+  if(get_press_power_switch_state() == false)
   {
     halt();
     set_flow_control_valve(LOW);  // default back to slow speed

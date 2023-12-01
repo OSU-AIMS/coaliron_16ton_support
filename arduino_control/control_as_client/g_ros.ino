@@ -29,28 +29,36 @@ void cb_induction_coil_command(const std_msgs::Bool &msg) {
 
 
 void cb_joint_command(const std_msgs::Float64& msg) {
+
+  // Check if motor powered on
+  if( get_press_power_switch_state() ) {
+    
+    // Extract data from message
+    last_ros_joint_command = msg.data;
   
-  // Extract data from message
-  last_ros_joint_command = msg.data;
-
-  // Lookup Current Position
-  float current_posn = posn_incr2meter(P1.readAnalog(2, 1));
-
-  // Soft Stop Limits
-  if      (last_ros_joint_command > maxStrokeSoft) last_ros_joint_command = maxStrokeSoft;
-  else if (last_ros_joint_command < minStrokeSoft) last_ros_joint_command = minStrokeSoft;
-
-  // Set the direction of motion
-  if (current_posn < last_ros_joint_command) directionOfMotion = false;  // down
-  else                                       directionOfMotion = true;   // up
-
-  // Serial Feedback
-  Serial.print("Set New Target Position: ");
-  Serial.println(last_ros_joint_command, 3);
-
-  // Enable Motion
-  remoteMotionEnabled = true;
-  remoteTargetAchieved = false;
+    // Lookup Current Position
+    float current_posn = posn_incr2meter(P1.readAnalog(2, 1));
+  
+    // Soft Stop Limits
+    if      (last_ros_joint_command > maxStrokeSoft) last_ros_joint_command = maxStrokeSoft;
+    else if (last_ros_joint_command < minStrokeSoft) last_ros_joint_command = minStrokeSoft;
+  
+    // Set the direction of motion
+    if (current_posn < last_ros_joint_command) directionOfMotion = false;  // down
+    else                                       directionOfMotion = true;   // up
+  
+    // Serial Feedback
+    Serial.print("Set New Target Position: ");
+    Serial.println(last_ros_joint_command, 3);
+  
+    // Enable Motion
+    remoteMotionEnabled = true;
+    remoteTargetAchieved = false;
+  }
+  else {
+    Serial.println("ROS joint command requested, but discarded.");
+    nh.loginfo("ROS joint command requested, but discarded.");    
+  }
 }
 
 

@@ -7,9 +7,11 @@ void moveDown() {
   // Clear Halt Flag
   been_halted = false;
 
+  nh.loginfo("Hydraulic valves set to move: DOWN");
+
   // Set valves to move DOWN
-  P1.writeDiscrete(LOW,1,5);   //Turn slot 1 channel 4 on
-  P1.writeDiscrete(HIGH,1,6);  //Turn slot 1 channel 5 off
+  P1.writeDiscrete(LOW,1,5);   //Turn slot 1 channel 5 on
+  P1.writeDiscrete(HIGH,1,6);  //Turn slot 1 channel 6 off
 }
 
 
@@ -17,9 +19,11 @@ void moveUp() {
   // Clear Halt Flag
   been_halted = false;
 
+  nh.loginfo("Hydraulic valves set to move: UP");
+
   // Set valves to move UP
-  P1.writeDiscrete(LOW,1,6);   //Turn slot 1 channel 5 off
-  P1.writeDiscrete(HIGH,1,5);  //Turn slot 1 channel 4 on
+  P1.writeDiscrete(LOW,1,6);   //Turn slot 1 channel 6 off
+  P1.writeDiscrete(HIGH,1,5);  //Turn slot 1 channel 5 on
 }
 
 
@@ -36,15 +40,14 @@ void halt() {
 
   if (!been_halted)
   {
-    Serial.println("Recieved HALT command. Setting MoveUp for # ms.");
+    nh.loginfo("Commanding HALT motion with 50ms UP pre-stop.");
     moveUp();
-  
     delay(50); // Pause n ms
-    Serial.println("Commanding HALT (both valves closed.");
+
+    nh.loginfo("Closing UP & DOWN hydraulic valves.");
+    P1.writeDiscrete(LOW,1,5);   //Turn slot 1 channel 5 off
+    P1.writeDiscrete(LOW,1,6);   //Turn slot 1 channel 6 off
   }
-  
-  P1.writeDiscrete(LOW,1,5);   //Turn slot 1 channel 4 off
-  P1.writeDiscrete(LOW,1,6);   //Turn slot 1 channel 5 off
 
   // Set Flag that halt has been called
   been_halted = true;

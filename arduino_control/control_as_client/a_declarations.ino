@@ -33,7 +33,7 @@ void update_ros_press_power_switch_state();
 void clearSerialBuffer();
 
 // Motion
-bool been_halted = false;
+bool been_halted = true;
 void moveDown();
 void moveUp();
 void halt();
