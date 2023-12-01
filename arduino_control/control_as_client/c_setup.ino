@@ -25,6 +25,7 @@ ros::Publisher pub_temperature1_alarm1_state("temperature1_alarm1_state", &tempe
 ros::Publisher pub_temperature1("temperature1", &temperature1_msg);
 //ros::Publisher pub_robot_status("robot_status", &robot_status_msg);
 
+ros::Subscriber<std_msgs::Bool> sub_induction_coil_command("set_induction_coil_power", &cb_induction_coil_command);
 ros::Subscriber<std_msgs::Float64> sub_joint_command("joint_command", cb_joint_command);
 
 
@@ -61,7 +62,10 @@ void setup() {
   }
 
   // Initialize Sensors
-  set_fork_power(true);
+  set_fork_power(false);
+
+  // Ensure heater starts in OFF state
+  set_induction_power(false);
 
   // Exteneral Remote Control Indicator
   pinMode(LED_BUILTIN, OUTPUT);

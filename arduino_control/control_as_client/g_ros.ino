@@ -14,10 +14,19 @@ void setup_ros() {
   nh.advertise(pub_press_power_switch_state);
   nh.advertise(pub_temperature1_alarm1_state);
   nh.advertise(pub_temperature1);
-//  nh.advertise(pub_robot_status);/
+//  nh.advertise(pub_robot_status);
 
+  nh.subscribe(sub_induction_coil_command);
   nh.subscribe(sub_joint_command);
 }
+
+
+void cb_induction_coil_command(const std_msgs::Bool &msg) {
+
+  // Set Coil Power State
+  set_induction_power(msg.data);
+}
+
 
 void cb_joint_command(const std_msgs::Float64& msg) {
   
