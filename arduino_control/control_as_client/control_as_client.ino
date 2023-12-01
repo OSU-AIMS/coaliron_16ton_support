@@ -8,12 +8,36 @@
  * roslaunch rosserial_server socket.launch
  * The default port is 11411
  * 
- * Copyright (c) 2022, The Ohio State University
+ * Copyright (c) 2022-2023, The Ohio State University
  * The Artificially Intelligent Manufacturing Systems Lab (AIMS)
  * Author: Adam Buynak
  */
  
- /* Software Version: v0.2.2 */
+ /* Software Version: v0.2.3 */
+
+
+/* ------------------------------------------
+ * | Card | Port | Use
+ * |-----------------------------------------
+ * |  1   |  1R  | Empty
+ * |  1   |  2R  | Empty
+ * |  1   |  3R  | Temperature alarm 1
+ * |  1   |  4R  | Empty
+ * |  1   |  5R  | Fork State
+ * |  1   |  6R  | Press Power Switch State
+ * |  1   |  7R  | Empty
+ * |  1   |  8R  | Empty
+ * |-----------------------------------------
+ * |  1   |  1W  | Empty
+ * |  1   |  2W  | Empty
+ * |  1   |  3W  | Induction Heater
+ * |  1   |  4W  | Fork Sensor power
+ * |  1   |  5W  | Hydraulic Valve 1
+ * |  1   |  6W  | Hydraulic Valve 2
+ * |  1   |  7W  | Flow control valve
+ * -----------------------------------------
+ */
+
 
 
 #include <Arduino.h>

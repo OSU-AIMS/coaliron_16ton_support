@@ -23,6 +23,7 @@ void set_remote_indicator();
 
 // ROS & Network Interfaces
 void cb_joint_command(const std_msgs::Float64);
+void cb_induction_coil_command(const std_msgs::Bool);
 void update_ros_robot_status();
 void update_ros_joint_states();
 void update_ros_fork_state();
@@ -42,3 +43,4 @@ bool tempFlowValveState = false;
 // Controller
 void controller();
 void set_fork_power(bool state);
+void set_induction_power(bool state);
